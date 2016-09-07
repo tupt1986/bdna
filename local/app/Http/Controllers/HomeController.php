@@ -4,26 +4,18 @@ namespace bdna\Http\Controllers;
 
 use bdna\Http\Requests;
 use Illuminate\Http\Request;
+use bdna\bg_vothuanhan;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('home');
+        $bg_vothuanhans = bg_vothuanhan::paginate(10);
+        $stt=1;
+
+        return view('welcome',[
+            'bg_vothuanhans'=>$bg_vothuanhans,
+            'stt'=>$stt,
+        ]);
     }
 }

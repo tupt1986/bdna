@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 
 Route::auth();
 /*
@@ -87,22 +85,32 @@ Route::post('/users/{id_user}',[
 Route::get('/vothuanhan',[
    'uses'=>'Bg_vothuanhanController@index',
     'as'=>'vothuanhans',
+    'middleware'=>'roles',
+    'roles'=>['Admin','Manager'],
 ]);
 Route::get('/vothuanhan/create',[
     'uses'=>'Bg_vothuanhanController@create',
     'as'=>'vothuanhan.create',
+    'middleware'=>'roles',
+    'roles'=>['Admin','Manager'],
 ]);
 Route::post('/vothuanhan/create',[
    'uses'=>'Bg_vothuanhanController@store',
     'as'=>'vothuanhan.store',
+    'middleware'=>'roles',
+    'roles'=>['Admin','Manager'],
 ]);
 Route::get('/vothuanhan/import',[
    'uses'=>'Bg_vothuanhanController@view_import',
     'as'=>'vothuanhan.viewimport',
+    'middleware'=>'roles',
+    'roles'=>['Admin','Manager'],
 ]);
 Route::post('/vothuanhan/import',[
     'uses'=>'Bg_vothuanhanController@import',
     'as'=>'vothuanhan.import',
+    'middleware'=>'roles',
+    'roles'=>['Admin','Manager'],
 ]);
 
 

@@ -13,13 +13,13 @@
     </div>
     <div class="row" align="right">
         <button class="btn-u btn-brd rounded-4x" onclick="window.open('{{url('/vothuanhan/create')}}', '_self')">
-            <i class="icon-user-follow"></i> Thêm mới
+            Thêm mới
         </button>
         <button class="btn-u btn-brd rounded-4x" onclick="window.open('{{url('/vothuanhan/import')}}', '_self')">
-            <i class="icon-user-follow"></i> Import
+            Import
         </button>
         <button class="btn-u btn-brd rounded-4x" onclick="window.open('/bdna/mau_import.xls', '_self')">
-            <i class="icon-user-follow"></i> Tải mẫu file import
+            Tải mẫu file import
         </button>
     </div>
 
@@ -27,13 +27,13 @@
         <thead>
         <tr>
             <th>STT</th>
-            <th>Số hiệu bưu gửi</th>
+            <th>Số hiệu</th>
             <th>Ngày gửi</th>
-            <th>Thông tin người gửi</th>
-            <th>Thông tin người nhận</th>
+            <th>Người gửi</th>
+            <th>Người nhận</th>
             <th>Trọng lượng</th>
-            <th>Loại bưu gửi</th>
-            <th>Nội dung bưu gửi</th>
+            <th>Loại BG</th>
+            <th>Nội dung</th>
             <th>Ghi chú</th>
         </tr>
         </thead>

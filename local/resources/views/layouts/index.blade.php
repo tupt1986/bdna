@@ -47,29 +47,15 @@
 
     <!-- CSS Customization -->
     <link rel="stylesheet" href="{{url('/')}}/assets/css/custom.css">
+
+    <script src="//code.jquery.com/jquery.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{url('/')}}/assets/plugins/back-to-top.js"></script>
+
 <body>
 <div class="wrapper">
     <!--=== Header ===-->
     <div div class="header-v4">
-        <!-- Topbar -->
-        <div class="topbar-v1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <ul class="list-inline top-v1-data">
-                            <li><a href="{{ url('/') }}"><i class="fa fa-home"></i></a></li>
-                            @if (Auth::guest())
-                                <li><a href="{{ url('/login') }}">Đăng nhập</a></li>
-                            @else
-                                <li><a href="{{ url('/logout') }}">Thoát</a></li>
-                            @endif
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Topbar -->
-
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="navbar navbar-default mega-menu" role="navigation">
             <div class="container">
@@ -101,21 +87,29 @@
                         <li><a href="{{url("/")}}">HOME</a></li>
                         <li><a href="{{url("/")}}">DỊCH VỤ</a></li>
                         <li><a href="{{url("/")}}">THƯ VIỆN ẢNH</a></li>
-                        <li class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="icon-settings"></i> Thiết lập
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{{route('vothuanhans')}}">quản lý bưu gửi vô thừa nhận</a></li>
-                                <li><a href="{{route('users')}}"><i class="icon-users"></i>&nbsp;&nbsp;&nbsp;Quản lý người dùng</a></li>
-                            </ul>
-                        </li>
+                        @if(Auth::guest())
+                            <li><a href="{{url("/login")}}">Đăng nhập</a></li>
+                        @else
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="icon-settings"></i> Thiết lập
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{route('vothuanhans')}}"><i class="icon-present"></i>&nbsp;&nbsp;&nbsp;Quản
+                                            lý bưu gửi vô thừa nhận</a></li>
+                                    <li><a href="{{route('users')}}"><i class="icon-users"></i>&nbsp;&nbsp;&nbsp;Quản lý
+                                            người dùng</a></li>
+                                </ul>
+                            </li>
+
+                            <li><a href="{{url("/logout")}}">đăng xuất - {{Auth::user()->name}}</a></li>
+                        @endif
                         <li>
                             <i class="search fa fa-search search-btn"></i>
 
                             <div class="search-open">
                                 <div class="input-group animated fadeInDown">
-                                    <input type="text" class="form-control" placeholder="Tìm kiếm nhanh ấn chỉ">
+                                    <input type="text" class="form-control" placeholder="Tìm kiếm nhanh">
                                     <span class="input-group-btn">
 										<button class="btn-u" type="button">Go</button>
 									</span>
@@ -142,9 +136,6 @@
 </div>
 
 @include('flash::message')
-<script src="//code.jquery.com/jquery.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="{{url('/')}}/assets/plugins/back-to-top.js"></script>
 
 <script>
     $('#flash-overlay-modal').modal();
